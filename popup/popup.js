@@ -49,7 +49,7 @@ async function init() {
       statusDot.className = 'status-dot inactive';
       statusBanner.className = 'status-banner';
       statusBanner.querySelector('.status-icon').textContent = '⚠️';
-      statusText.textContent = 'Navigate to a Google Form first.';
+      statusText.textContent = 'No Google Form active';
       solveBtn.disabled = true;
     }
   } catch (e) {

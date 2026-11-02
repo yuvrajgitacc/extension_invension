@@ -11,46 +11,25 @@
     <!-- Header -->
     <header class="header">
       <div class="logo">
-        <img src="../icons/icon48.png" alt="FormGenius" class="logo-icon" />
+        <div class="logo-icon-box">
+          <span class="logo-sparkle">✦</span>
+        </div>
         <div class="logo-text">
           <span class="logo-name">FormGenius</span>
           <span class="logo-tagline">AI Form Solver</span>
         </div>
       </div>
-      <div class="header-right">
-        <div class="status-dot" id="statusDot" title="Status"></div>
-      </div>
+      <div class="status-dot" id="statusDot" title="Status"></div>
     </header>
 
-    <!-- Google Form Status Banner -->
-    <div class="status-banner" id="statusBanner">
-      <span class="status-icon">🔍</span>
-      <span class="status-text" id="statusText">Detecting Google Form...</span>
-    </div>
-
-    <!-- Gemini API Key Section -->
-    <div class="section">
-      <label class="label" for="apiKey">GEMINI API KEY</label>
-      <div class="input-group">
-        <input
-          type="password"
-          id="apiKey"
-          class="input"
-          placeholder="AIzaSy..."
-          autocomplete="off"
-          spellcheck="false"
-        />
-        <button class="eye-btn" id="toggleKey" title="Show/Hide Key" aria-label="Toggle API Key visibility">👁</button>
+    <!-- Top Card: Status & Shortcut -->
+    <div class="status-card" id="statusBanner">
+      <div class="status-title-row">
+        <span class="status-icon" style="display:none">⚠️</span>
+        <span class="status-text" id="statusText">No Google Form active</span>
       </div>
-      <div class="hint">
-        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="link" rel="noreferrer">Get free API key →</a>
-      </div>
-    </div>
-
-    <!-- Keyboard Shortcut Card -->
-    <div class="shortcut-card">
-      <div class="shortcut-header">
-        <span class="shortcut-label">Shortcut</span>
+      <div class="shortcut-row">
+        <span class="shortcut-label">Press on form:</span>
         <div class="shortcut-keys">
           <kbd>Alt</kbd>
           <span class="shortcut-plus">+</span>
@@ -59,38 +38,54 @@
           <kbd>S</kbd>
         </div>
       </div>
-      <div class="shortcut-desc">Press on Google Form to solve</div>
     </div>
 
-    <!-- Action Buttons -->
-    <div class="actions">
-      <button class="btn btn-primary" id="solveBtn">
-        <span class="btn-icon">⚡</span>
-        <span>Solve Form</span>
-      </button>
-      <button class="btn btn-save" id="saveBtn">
-        <span class="btn-icon">💾</span>
-        <span>Save Key</span>
-      </button>
+    <!-- Gemini API Key Section -->
+    <div class="api-key-section">
+      <div class="api-key-header">
+        <label class="label" for="apiKey">Gemini API Key</label>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="link-get-key" rel="noreferrer">Get key ↗</a>
+      </div>
+      <div class="input-container">
+        <input
+          type="password"
+          id="apiKey"
+          class="input"
+          placeholder="••••••••••••••••••••••••••••"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="eye-btn" id="toggleKey" title="Show/Hide Key" aria-label="Toggle API Key visibility">👁</button>
+        <button class="btn-save" id="saveBtn">Save</button>
+      </div>
     </div>
 
-    <!-- Statistics Grid -->
-    <div class="stats">
+    <!-- Full-Width Solve Form Action Button -->
+    <button class="btn-solve" id="solveBtn" disabled>
+      <span class="btn-icon">⚡</span>
+      <span>Solve Form Now</span>
+    </button>
+
+    <!-- Statistics Section with Vertical Divider -->
+    <div class="stats" id="stats">
       <div class="stat">
         <div class="stat-value" id="solvedCount">0</div>
-        <div class="stat-label">Solved</div>
+        <div class="stat-label">Forms Solved</div>
       </div>
+      <div class="stats-divider"></div>
       <div class="stat">
         <div class="stat-value" id="questionsCount">0</div>
-        <div class="stat-label">Answered</div>
+        <div class="stat-label">Questions Solved</div>
       </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-      <span>v1.0.0</span>
-      <span class="footer-dot">·</span>
-      <span>Gemini AI</span>
+      <div class="footer-left">
+        <span class="footer-gear">⚙</span>
+        <span>Stealth AI Engine</span>
+      </div>
+      <div class="footer-right">v1.2.0</div>
     </footer>
   </div>
 

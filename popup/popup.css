@@ -1,7 +1,5 @@
 /* ==========================================================================
-   FormGenius — Ultra-Compact Chrome-Native Popup
-   Width: 275px | Height: ~270px (Matches Native Chrome Extensions Menu)
-   Supports Light & Dark Modes
+   FormGenius — Pixel-Perfect Layout matching User Design Spec
    ========================================================================== */
 
 *, *::before, *::after {
@@ -10,102 +8,13 @@
   padding: 0;
 }
 
-/* ── Dark Theme (Default — Chrome Native Dark Surface) ── */
-:root {
-  --cr-bg: #28292a;
-  --cr-surface: #202124;
-  --cr-card-bg: #202124;
-  --cr-input-bg: #202124;
-  --cr-hover: rgba(255, 255, 255, 0.08);
-  --cr-active: rgba(255, 255, 255, 0.14);
-  --cr-border: #3c4043;
-  --cr-divider: #383a3d;
-  
-  --cr-text-primary: #e8eaed;
-  --cr-text-secondary: #9aa0a6;
-  --cr-text-muted: #80868b;
-  
-  --cr-primary: #8ab4f8;
-  --cr-primary-hover: #aecbfa;
-  --cr-primary-text: #00325b;
-  --cr-focus-ring: rgba(138, 180, 248, 0.3);
-  
-  --cr-success: #81c995;
-  --cr-success-bg: rgba(129, 201, 149, 0.12);
-  --cr-success-border: rgba(129, 201, 149, 0.28);
-  --cr-success-text: #81c995;
-  
-  --cr-warning: #fdd663;
-  --cr-warning-bg: rgba(253, 214, 99, 0.1);
-  --cr-warning-border: rgba(253, 214, 99, 0.25);
-  --cr-warning-text: #fdd663;
-  
-  --cr-error: #f28b82;
-  --cr-error-bg: rgba(242, 139, 130, 0.12);
-  --cr-error-border: rgba(242, 139, 130, 0.28);
-  --cr-error-text: #f28b82;
-  
-  --cr-kbd-bg: #35363a;
-  --cr-kbd-border: #5f6368;
-  --cr-kbd-bottom: #4a4d51;
-  --cr-kbd-text: #e8eaed;
-  
-  --cr-radius-popup: 12px;
-  --cr-radius-card: 6px;
-  --cr-radius-pill: 14px;
-}
-
-/* ── Light Theme (Chrome Native Light Surface) ── */
-@media (prefers-color-scheme: light) {
-  :root {
-    --cr-bg: #ffffff;
-    --cr-surface: #f8f9fa;
-    --cr-card-bg: #f8f9fa;
-    --cr-input-bg: #f1f3f4;
-    --cr-hover: rgba(0, 0, 0, 0.05);
-    --cr-active: rgba(0, 0, 0, 0.09);
-    --cr-border: #dadce0;
-    --cr-divider: #e8eaed;
-    
-    --cr-text-primary: #1f1f1f;
-    --cr-text-secondary: #5f6368;
-    --cr-text-muted: #70757a;
-    
-    --cr-primary: #1a73e8;
-    --cr-primary-hover: #1765cc;
-    --cr-primary-text: #ffffff;
-    --cr-focus-ring: rgba(26, 115, 232, 0.25);
-    
-    --cr-success: #1e8e3e;
-    --cr-success-bg: rgba(52, 168, 83, 0.08);
-    --cr-success-border: rgba(52, 168, 83, 0.25);
-    --cr-success-text: #137333;
-    
-    --cr-warning: #e37400;
-    --cr-warning-bg: rgba(249, 171, 0, 0.08);
-    --cr-warning-border: rgba(249, 171, 0, 0.25);
-    --cr-warning-text: #b06000;
-    
-    --cr-error: #d93025;
-    --cr-error-bg: rgba(217, 48, 37, 0.08);
-    --cr-error-border: rgba(217, 48, 37, 0.25);
-    --cr-error-text: #c5221f;
-    
-    --cr-kbd-bg: #ffffff;
-    --cr-kbd-border: #dadce0;
-    --cr-kbd-bottom: #bdc1c6;
-    --cr-kbd-text: #3c4043;
-  }
-}
-
-/* ── Root & Window Dimensions ── */
 html, body {
-  width: 275px;
+  width: 285px;
   margin: 0;
   padding: 0;
-  background-color: var(--cr-bg);
+  background-color: #191a1e;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  color: var(--cr-text-primary);
+  color: #e4e7ec;
   font-size: 12px;
   line-height: 1.35;
   -webkit-font-smoothing: antialiased;
@@ -114,38 +23,44 @@ html, body {
   user-select: none;
 }
 
-/* ── Compact Main Container ── */
 .container {
-  padding: 10px 11px;
+  padding: 14px 15px 12px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  background-color: var(--cr-bg);
-  border-radius: var(--cr-radius-popup);
+  background-color: #191a1e;
 }
 
-/* ── 1. Compact Header (Matching Chrome Extensions Menu Row) ── */
+/* ── 1. Header ── */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--cr-divider);
+  margin-bottom: 11px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
 }
 
-.logo-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  object-fit: contain;
-  display: block;
+.logo-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #1e7bf2, #1565c0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(30, 123, 242, 0.3);
+}
+
+.logo-sparkle {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: bold;
 }
 
 .logo-text {
@@ -154,356 +69,343 @@ html, body {
 }
 
 .logo-name {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--cr-text-primary);
-  letter-spacing: -0.1px;
+  color: #ffffff;
+  letter-spacing: -0.2px;
   line-height: 1.2;
 }
 
 .logo-tagline {
-  font-size: 10px;
-  color: var(--cr-text-secondary);
+  font-size: 10.5px;
+  color: #8e929d;
   font-weight: 400;
-  line-height: 1.1;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
+  line-height: 1.15;
 }
 
 .status-dot {
-  width: 7px;
-  height: 7px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background-color: var(--cr-text-muted);
+  background-color: #fbbc04;
+  box-shadow: 0 0 6px rgba(251, 188, 4, 0.5);
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.status-dot.active {
-  background-color: var(--cr-success);
-  box-shadow: 0 0 0 2px rgba(129, 201, 149, 0.25);
-  animation: cr-pulse-dot 2.5s infinite ease-in-out;
-}
-
-.status-dot.inactive {
-  background-color: var(--cr-warning);
-  box-shadow: 0 0 0 2px rgba(253, 214, 99, 0.2);
-}
-
-@keyframes cr-pulse-dot {
-  0%, 100% {
-    box-shadow: 0 0 0 2px rgba(129, 201, 149, 0.25);
-  }
-  50% {
-    box-shadow: 0 0 0 3.5px rgba(129, 201, 149, 0.35);
-  }
-}
-
-/* ── 2. Compact Status Banner ── */
-.status-banner {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 26px;
-  background-color: var(--cr-card-bg);
-  border: 1px solid var(--cr-border);
-  border-radius: var(--cr-radius-card);
-  padding: 4px 8px;
-  font-size: 10.5px;
-  color: var(--cr-text-secondary);
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.status-banner.detected {
-  background-color: var(--cr-success-bg);
-  border-color: var(--cr-success-border);
-  color: var(--cr-success-text);
-  font-weight: 500;
-}
-
-.status-banner.error {
-  background-color: var(--cr-error-bg);
-  border-color: var(--cr-error-border);
-  color: var(--cr-error-text);
-}
-
-.status-icon {
-  font-size: 11px;
-  line-height: 1;
   flex-shrink: 0;
 }
 
+.status-dot.active {
+  background-color: #34a853;
+  box-shadow: 0 0 8px rgba(52, 168, 83, 0.6);
+}
+
+.status-dot.inactive {
+  background-color: #fbbc04;
+  box-shadow: 0 0 6px rgba(251, 188, 4, 0.5);
+}
+
+/* ── 2. Top Card: Status & Shortcut ── */
+.status-card {
+  background-color: #212328;
+  border: 1px solid #2c2f36;
+  border-radius: 9px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 11px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.status-card.detected {
+  border-color: rgba(52, 168, 83, 0.35);
+  background-color: rgba(52, 168, 83, 0.08);
+}
+
+.status-card.detected .status-text {
+  color: #81c995;
+}
+
+.status-title-row {
+  display: flex;
+  align-items: center;
+}
+
 .status-text {
-  flex: 1;
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ── 3. Compact Gemini API Key Section ── */
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.label {
-  font-size: 9.5px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--cr-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  line-height: 1.1;
+  color: #ffffff;
+  line-height: 1.25;
 }
 
-.input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input {
-  width: 100%;
-  height: 29px;
-  background-color: var(--cr-input-bg);
-  border: 1px solid var(--cr-border);
-  border-radius: var(--cr-radius-card);
-  color: var(--cr-text-primary);
-  font-family: inherit;
-  font-size: 11.5px;
-  padding: 0 28px 0 8px;
-  outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.input:focus {
-  border-color: var(--cr-primary);
-  box-shadow: 0 0 0 2px var(--cr-focus-ring);
-}
-
-.input::placeholder {
-  color: var(--cr-text-muted);
-  font-size: 11px;
-}
-
-.eye-btn {
-  position: absolute;
-  right: 3px;
-  width: 22px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 11px;
-  color: var(--cr-text-secondary);
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.eye-btn:hover {
-  background-color: var(--cr-hover);
-  color: var(--cr-text-primary);
-}
-
-.hint {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1px;
-}
-
-.link {
-  color: var(--cr-primary);
-  text-decoration: none;
-  font-size: 10px;
-  font-weight: 500;
-}
-
-.link:hover {
-  text-decoration: underline;
-  color: var(--cr-primary-hover);
-}
-
-/* ── 4. Compact Keyboard Shortcut Panel ── */
-.shortcut-card {
-  background-color: var(--cr-card-bg);
-  border: 1px solid var(--cr-border);
-  border-radius: var(--cr-radius-card);
-  padding: 5px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.shortcut-header {
+.shortcut-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .shortcut-label {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--cr-text-secondary);
+  font-size: 11px;
+  color: #8e929d;
+  font-weight: 400;
 }
 
 .shortcut-keys {
   display: inline-flex;
   align-items: center;
-  gap: 2.5px;
+  gap: 3px;
 }
 
 .shortcut-plus {
-  color: var(--cr-text-muted);
-  font-size: 9px;
+  color: #636773;
+  font-size: 10px;
   font-weight: 500;
 }
 
 kbd {
   display: inline-block;
-  background-color: var(--cr-kbd-bg);
-  border: 1px solid var(--cr-kbd-border);
-  border-bottom: 1.5px solid var(--cr-kbd-bottom);
-  border-radius: 3px;
-  color: var(--cr-kbd-text);
+  background-color: #2a2d34;
+  border: 1px solid #3c404b;
+  border-radius: 4px;
+  color: #e4e7ec;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 9.5px;
+  font-size: 10.5px;
   font-weight: 600;
-  padding: 1px 4.5px;
-  line-height: 1.25;
+  padding: 1.5px 5.5px;
+  line-height: 1.3;
 }
 
-.shortcut-desc {
-  font-size: 9.5px;
-  color: var(--cr-text-muted);
-  line-height: 1.2;
-}
-
-/* ── 5. Action Buttons (Height: 29px) ── */
-.actions {
+/* ── 3. Gemini API Key Section ── */
+.api-key-section {
   display: flex;
-  gap: 6px;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 11px;
 }
 
-.btn {
+.api-key-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #8e929d;
+}
+
+.link-get-key {
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.link-get-key:hover {
+  text-decoration: underline;
+  color: #60a5fa;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #212328;
+  border: 1px solid #2c2f36;
+  border-radius: 8px;
+  height: 35px;
+  padding: 0 4px 0 10px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-container:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.input {
   flex: 1;
-  height: 29px;
-  padding: 0 10px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  padding: 0 4px 0 0;
+}
+
+.input::placeholder {
+  color: #555963;
+  letter-spacing: 1px;
+}
+
+.eye-btn {
+  background: transparent;
+  border: none;
+  color: #717582;
+  cursor: pointer;
+  font-size: 13px;
+  width: 24px;
+  height: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  border-radius: var(--cr-radius-pill);
-  font-family: inherit;
-  font-size: 11.5px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  outline: none;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.08s ease;
+  border-radius: 4px;
+  margin-right: 3px;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.btn:active:not(:disabled) {
+.eye-btn:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.btn-save {
+  background-color: #2b2d35;
+  border: 1px solid #3d414c;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  height: 27px;
+  padding: 0 10px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+}
+
+.btn-save:hover {
+  background-color: #353842;
+  border-color: #4f5462;
+}
+
+.btn-save:active {
+  transform: scale(0.97);
+}
+
+/* ── 4. Full-Width Solve Form Action Button ── */
+.btn-solve {
+  width: 100%;
+  height: 38px;
+  border-radius: 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  margin-bottom: 13px;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
+}
+
+/* Disabled State (Matches image) */
+.btn-solve:disabled {
+  background-color: #27292f;
+  color: #585c67;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-solve:disabled .btn-icon {
+  opacity: 0.5;
+}
+
+/* Enabled State (Google Blue Pill) */
+.btn-solve:not(:disabled) {
+  background-color: #1a73e8;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.35);
+}
+
+.btn-solve:not(:disabled):hover {
+  background-color: #1765cc;
+  box-shadow: 0 3px 12px rgba(26, 115, 232, 0.45);
+}
+
+.btn-solve:not(:disabled):active {
   transform: scale(0.98);
 }
 
 .btn-icon {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1;
 }
 
-.btn-primary {
-  background-color: var(--cr-primary);
-  color: var(--cr-primary-text);
-  border: 1px solid transparent;
-  font-weight: 600;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background-color: var(--cr-primary-hover);
-}
-
-.btn-primary:disabled {
-  opacity: 0.38;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.btn-save {
-  background-color: transparent;
-  color: var(--cr-primary);
-  border: 1px solid var(--cr-border);
-}
-
-.btn-save:hover:not(:disabled) {
-  background-color: var(--cr-hover);
-  border-color: var(--cr-primary);
-}
-
-/* ── 6. Compact Statistics Grid ── */
+/* ── 5. Statistics Section ── */
 .stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  padding: 0 4px;
 }
 
 .stat {
-  height: 34px;
-  background-color: var(--cr-card-bg);
-  border: 1px solid var(--cr-border);
-  border-radius: var(--cr-radius-card);
-  padding: 3px 6px;
+  flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
   text-align: center;
 }
 
 .stat-value {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--cr-primary);
-  line-height: 1;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
 }
 
 .stat-label {
-  font-size: 8.5px;
-  font-weight: 500;
-  color: var(--cr-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  line-height: 1;
+  font-size: 10.5px;
+  color: #8e929d;
+  font-weight: 400;
+  margin-top: 1px;
 }
 
-/* ── 7. Subtle Footer ── */
+.stats-divider {
+  width: 1px;
+  height: 24px;
+  background-color: #2c2f36;
+}
+
+/* ── 6. Footer ── */
 .footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: #585c67;
+  padding-top: 4px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
   gap: 5px;
-  padding-top: 5px;
-  border-top: 1px solid var(--cr-divider);
-  font-size: 9.5px;
-  color: var(--cr-text-muted);
 }
 
-.footer-dot {
-  font-size: 7px;
-  opacity: 0.7;
+.footer-gear {
+  font-size: 12px;
+  line-height: 1;
 }
 
-/* ── Loading Spinner ── */
+.footer-right {
+  font-weight: 400;
+}
+
+/* ── Spinner for Solving state ── */
 .spinner {
-  width: 11px;
-  height: 11px;
-  border: 1.5px solid rgba(0, 50, 91, 0.25);
-  border-top-color: currentColor;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
   border-radius: 50%;
   animation: cr-spin 0.75s linear infinite;
   display: inline-block;
@@ -519,17 +421,17 @@ kbd {
 /* ── Toast Notification ── */
 .toast {
   position: fixed;
-  bottom: 8px;
+  bottom: 12px;
   left: 50%;
-  transform: translateX(-50%) translateY(16px);
-  background-color: #323232;
+  transform: translateX(-50%) translateY(20px);
+  background-color: #2b2d35;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 10.5px;
+  border: 1px solid #3d414c;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1), transform 0.2s cubic-bezier(0, 0, 0.2, 1);
@@ -543,9 +445,11 @@ kbd {
 }
 
 .toast.success {
-  border-left: 2.5px solid #81c995;
+  border-left: 3px solid #34a853;
+  color: #81c995;
 }
 
 .toast.error {
-  border-left: 2.5px solid #f28b82;
+  border-left: 3px solid #ea4335;
+  color: #f28b82;
 }
