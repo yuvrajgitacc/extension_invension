@@ -1,0 +1,644 @@
+/* ==========================================================================
+   FormGenius — Chrome Extension Native UI Theme
+   Matches Google Chrome Material Design 3 (Refresh 2023)
+   Supports Dark Mode (Screenshot 1) & Light Mode (Screenshot 2)
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Chrome Design Tokens (Dark Mode Default — Screenshot 1) ── */
+:root {
+  --cr-bg: #292a2d;
+  --cr-surface: #202124;
+  --cr-card-bg: #202124;
+  --cr-input-bg: #202124;
+  --cr-hover: rgba(255, 255, 255, 0.08);
+  --cr-active: rgba(255, 255, 255, 0.14);
+  --cr-border: #3c4043;
+  --cr-divider: #3c4043;
+  
+  --cr-text-primary: #e8eaed;
+  --cr-text-secondary: #9aa0a6;
+  --cr-text-muted: #80868b;
+  
+  /* Chrome Blue */
+  --cr-primary: #8ab4f8;
+  --cr-primary-hover: #aecbfa;
+  --cr-primary-text: #00325b;
+  --cr-focus-ring: rgba(138, 180, 248, 0.35);
+  
+  /* Status Colors */
+  --cr-success: #81c995;
+  --cr-success-bg: rgba(129, 201, 149, 0.12);
+  --cr-success-border: rgba(129, 201, 149, 0.3);
+  --cr-success-text: #81c995;
+  
+  --cr-warning: #fdd663;
+  --cr-warning-bg: rgba(253, 214, 99, 0.1);
+  --cr-warning-border: rgba(253, 214, 99, 0.25);
+  --cr-warning-text: #fdd663;
+  
+  --cr-error: #f28b82;
+  --cr-error-bg: rgba(242, 139, 130, 0.12);
+  --cr-error-border: rgba(242, 139, 130, 0.3);
+  --cr-error-text: #f28b82;
+  
+  /* Keyboard Badges */
+  --cr-kbd-bg: #35363a;
+  --cr-kbd-border: #5f6368;
+  --cr-kbd-bottom: #4a4d51;
+  --cr-kbd-text: #e8eaed;
+  
+  /* Radii */
+  --cr-radius-card: 8px;
+  --cr-radius-pill: 18px;
+  --cr-radius-sm: 6px;
+  
+  /* Shadow */
+  --cr-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --cr-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Chrome Light Mode (Screenshot 2) ── */
+@media (prefers-color-scheme: light) {
+  :root {
+    --cr-bg: #ffffff;
+    --cr-surface: #f8f9fa;
+    --cr-card-bg: #f8f9fa;
+    --cr-input-bg: #f1f3f4;
+    --cr-hover: rgba(0, 0, 0, 0.05);
+    --cr-active: rgba(0, 0, 0, 0.09);
+    --cr-border: #dadce0;
+    --cr-divider: #e8eaed;
+    
+    --cr-text-primary: #1f1f1f;
+    --cr-text-secondary: #5f6368;
+    --cr-text-muted: #70757a;
+    
+    --cr-primary: #1a73e8;
+    --cr-primary-hover: #1765cc;
+    --cr-primary-text: #ffffff;
+    --cr-focus-ring: rgba(26, 115, 232, 0.25);
+    
+    --cr-success: #1e8e3e;
+    --cr-success-bg: rgba(52, 168, 83, 0.08);
+    --cr-success-border: rgba(52, 168, 83, 0.25);
+    --cr-success-text: #137333;
+    
+    --cr-warning: #e37400;
+    --cr-warning-bg: rgba(249, 171, 0, 0.08);
+    --cr-warning-border: rgba(249, 171, 0, 0.25);
+    --cr-warning-text: #b06000;
+    
+    --cr-error: #d93025;
+    --cr-error-bg: rgba(217, 48, 37, 0.08);
+    --cr-error-border: rgba(217, 48, 37, 0.25);
+    --cr-error-text: #c5221f;
+    
+    --cr-kbd-bg: #ffffff;
+    --cr-kbd-border: #dadce0;
+    --cr-kbd-bottom: #bdc1c6;
+    --cr-kbd-text: #3c4043;
+    
+    --cr-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --cr-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Explicit theme override classes */
+:root.theme-dark, body.theme-dark {
+  --cr-bg: #292a2d;
+  --cr-surface: #202124;
+  --cr-card-bg: #202124;
+  --cr-input-bg: #202124;
+  --cr-hover: rgba(255, 255, 255, 0.08);
+  --cr-active: rgba(255, 255, 255, 0.14);
+  --cr-border: #3c4043;
+  --cr-divider: #3c4043;
+  --cr-text-primary: #e8eaed;
+  --cr-text-secondary: #9aa0a6;
+  --cr-text-muted: #80868b;
+  --cr-primary: #8ab4f8;
+  --cr-primary-hover: #aecbfa;
+  --cr-primary-text: #00325b;
+  --cr-focus-ring: rgba(138, 180, 248, 0.35);
+  --cr-success: #81c995;
+  --cr-success-bg: rgba(129, 201, 149, 0.12);
+  --cr-success-border: rgba(129, 201, 149, 0.3);
+  --cr-success-text: #81c995;
+  --cr-warning: #fdd663;
+  --cr-warning-bg: rgba(253, 214, 99, 0.1);
+  --cr-warning-border: rgba(253, 214, 99, 0.25);
+  --cr-warning-text: #fdd663;
+  --cr-error: #f28b82;
+  --cr-error-bg: rgba(242, 139, 130, 0.12);
+  --cr-error-border: rgba(242, 139, 130, 0.3);
+  --cr-error-text: #f28b82;
+  --cr-kbd-bg: #35363a;
+  --cr-kbd-border: #5f6368;
+  --cr-kbd-bottom: #4a4d51;
+  --cr-kbd-text: #e8eaed;
+}
+
+:root.theme-light, body.theme-light {
+  --cr-bg: #ffffff;
+  --cr-surface: #f8f9fa;
+  --cr-card-bg: #f8f9fa;
+  --cr-input-bg: #f1f3f4;
+  --cr-hover: rgba(0, 0, 0, 0.05);
+  --cr-active: rgba(0, 0, 0, 0.09);
+  --cr-border: #dadce0;
+  --cr-divider: #e8eaed;
+  --cr-text-primary: #1f1f1f;
+  --cr-text-secondary: #5f6368;
+  --cr-text-muted: #70757a;
+  --cr-primary: #1a73e8;
+  --cr-primary-hover: #1765cc;
+  --cr-primary-text: #ffffff;
+  --cr-focus-ring: rgba(26, 115, 232, 0.25);
+  --cr-success: #1e8e3e;
+  --cr-success-bg: rgba(52, 168, 83, 0.08);
+  --cr-success-border: rgba(52, 168, 83, 0.25);
+  --cr-success-text: #137333;
+  --cr-warning: #e37400;
+  --cr-warning-bg: rgba(249, 171, 0, 0.08);
+  --cr-warning-border: rgba(249, 171, 0, 0.25);
+  --cr-warning-text: #b06000;
+  --cr-error: #d93025;
+  --cr-error-bg: rgba(217, 48, 37, 0.08);
+  --cr-error-border: rgba(217, 48, 37, 0.25);
+  --cr-error-text: #c5221f;
+  --cr-kbd-bg: #ffffff;
+  --cr-kbd-border: #dadce0;
+  --cr-kbd-bottom: #bdc1c6;
+  --cr-kbd-text: #3c4043;
+}
+
+/* ── Base Body ── */
+body {
+  width: 350px;
+  background-color: var(--cr-bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--cr-text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* ── Main Container ── */
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  background-color: var(--cr-bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Header (Matching Chrome Extensions Menu Header) ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cr-divider);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cr-text-primary);
+  letter-spacing: -0.1px;
+  line-height: 1.3;
+}
+
+.logo-tagline {
+  font-size: 11px;
+  color: var(--cr-text-secondary);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Status Dot */
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--cr-text-muted);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.status-dot.active {
+  background-color: var(--cr-success);
+  box-shadow: 0 0 0 3px rgba(129, 201, 149, 0.25);
+  animation: pulse-dot 2.5s infinite ease-in-out;
+}
+
+.status-dot.inactive {
+  background-color: var(--cr-warning);
+  box-shadow: 0 0 0 3px rgba(253, 214, 99, 0.2);
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(129, 201, 149, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(129, 201, 149, 0.4);
+  }
+}
+
+/* ── Status Banner (Matching Chrome Site Access Notice) ── */
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--cr-card-bg);
+  border: 1px solid var(--cr-border);
+  border-radius: var(--cr-radius-card);
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--cr-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.status-banner.detected {
+  background-color: var(--cr-success-bg);
+  border-color: var(--cr-success-border);
+  color: var(--cr-success-text);
+  font-weight: 500;
+}
+
+.status-banner.error {
+  background-color: var(--cr-error-bg);
+  border-color: var(--cr-error-border);
+  color: var(--cr-error-text);
+}
+
+.status-icon {
+  font-size: 15px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.status-text {
+  flex: 1;
+  line-height: 1.35;
+}
+
+/* ── Input Section (Chrome Settings Style) ── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cr-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 38px;
+  background-color: var(--cr-input-bg);
+  border: 1px solid var(--cr-border);
+  border-radius: var(--cr-radius-card);
+  color: var(--cr-text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 0 40px 0 12px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--cr-primary);
+  box-shadow: 0 0 0 2px var(--cr-focus-ring);
+}
+
+.input::placeholder {
+  color: var(--cr-text-muted);
+  font-size: 12px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--cr-text-secondary);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.eye-btn:hover {
+  background-color: var(--cr-hover);
+  color: var(--cr-text-primary);
+}
+
+.hint {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1px;
+}
+
+.link {
+  color: var(--cr-primary);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--cr-primary-hover);
+}
+
+/* ── Shortcut Card (Chrome Shortcuts Style) ── */
+.shortcut-card {
+  background-color: var(--cr-card-bg);
+  border: 1px solid var(--cr-border);
+  border-radius: var(--cr-radius-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.shortcut-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.shortcut-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cr-text-secondary);
+}
+
+.shortcut-keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.shortcut-plus {
+  color: var(--cr-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+kbd {
+  display: inline-block;
+  background-color: var(--cr-kbd-bg);
+  border: 1px solid var(--cr-kbd-border);
+  border-bottom: 2px solid var(--cr-kbd-bottom);
+  border-radius: 4px;
+  color: var(--cr-kbd-text);
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Roboto Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.shortcut-desc {
+  font-size: 11px;
+  color: var(--cr-text-muted);
+  text-align: left;
+}
+
+/* ── Action Buttons (Chrome Material 3 Style) ── */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  height: 36px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--cr-radius-pill);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Primary Filled Button (Google Blue) */
+.btn-primary {
+  background-color: var(--cr-primary);
+  color: var(--cr-primary-text);
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--cr-primary-hover);
+  box-shadow: var(--cr-elevation-1);
+}
+
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 2px var(--cr-bg), 0 0 0 4px var(--cr-primary);
+}
+
+.btn-primary:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Secondary Outlined Button */
+.btn-save {
+  background-color: transparent;
+  color: var(--cr-primary);
+  border: 1px solid var(--cr-border);
+}
+
+.btn-save:hover:not(:disabled) {
+  background-color: var(--cr-hover);
+  border-color: var(--cr-primary);
+}
+
+.btn-save:active:not(:disabled) {
+  background-color: var(--cr-active);
+}
+
+.btn-save:focus-visible {
+  box-shadow: 0 0 0 2px var(--cr-bg), 0 0 0 4px var(--cr-primary);
+}
+
+/* ── Stats Tiles (Clean Chrome Card Metric Grid) ── */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat {
+  background-color: var(--cr-card-bg);
+  border: 1px solid var(--cr-border);
+  border-radius: var(--cr-radius-card);
+  padding: 8px 10px;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cr-primary);
+  line-height: 1.25;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--cr-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+}
+
+/* ── Footer (Matching Chrome Extensions Bottom Bar) ── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--cr-divider);
+  font-size: 11px;
+  color: var(--cr-text-muted);
+  margin-top: 2px;
+}
+
+.footer-dot {
+  font-size: 8px;
+  opacity: 0.7;
+}
+
+/* ── Loading Spinner (Chrome Material Spinner) ── */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 50, 91, 0.25);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: cr-spin 0.75s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes cr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Toast Notification (Chrome Snackbar) ── */
+.toast {
+  position: fixed;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(24px);
+  background-color: #323232;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--cr-radius-card);
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: var(--cr-elevation-2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1), transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+  border-left: 3px solid #81c995;
+}
+
+.toast.error {
+  border-left: 3px solid #f28b82;
+}

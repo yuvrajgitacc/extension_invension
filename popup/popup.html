@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FormGenius</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <img src="../icons/icon48.png" alt="FormGenius" class="logo-icon" />
+        <div class="logo-text">
+          <span class="logo-name">FormGenius</span>
+          <span class="logo-tagline">AI Form Solver</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="status-dot" id="statusDot" title="Status"></div>
+      </div>
+    </div>
+
+    <!-- Status Banner -->
+    <div class="status-banner" id="statusBanner">
+      <span class="status-icon">🔍</span>
+      <span class="status-text" id="statusText">Detecting Google Form...</span>
+    </div>
+
+    <!-- API Key Section -->
+    <div class="section">
+      <label class="label" for="apiKey">Gemini API Key</label>
+      <div class="input-group">
+        <input
+          type="password"
+          id="apiKey"
+          class="input"
+          placeholder="AIzaSy..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="eye-btn" id="toggleKey" title="Show/Hide API Key" aria-label="Toggle API Key visibility">👁</button>
+      </div>
+      <div class="hint">
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="link" rel="noreferrer">Get free API key →</a>
+      </div>
+    </div>
+
+    <!-- Shortcut Info -->
+    <div class="shortcut-card">
+      <div class="shortcut-header">
+        <span class="shortcut-label">Keyboard Shortcut</span>
+        <div class="shortcut-keys">
+          <kbd>Alt</kbd>
+          <span class="shortcut-plus">+</span>
+          <kbd>Shift</kbd>
+          <span class="shortcut-plus">+</span>
+          <kbd>S</kbd>
+        </div>
+      </div>
+      <div class="shortcut-desc">Press on any Google Form to solve instantly</div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn btn-primary" id="solveBtn">
+        <span class="btn-icon">⚡</span>
+        <span>Solve Form Now</span>
+      </button>
+      <button class="btn btn-save" id="saveBtn">
+        <span class="btn-icon">💾</span>
+        <span>Save Key</span>
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="solvedCount">0</div>
+        <div class="stat-label">Forms Solved</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="questionsCount">0</div>
+        <div class="stat-label">Questions Answered</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>v1.0.0</span>
+      <span class="footer-dot">•</span>
+      <span>Powered by Gemini AI</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
