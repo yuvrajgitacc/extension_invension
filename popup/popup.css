@@ -1,7 +1,7 @@
 /* ==========================================================================
-   FormGenius — Refined Compact Chrome-Native Popup
-   Dimensions: ~330px width × ~370px height (Content-driven, no scrollbars)
-   Consistent with Google Chrome Extension Native UI (Light & Dark Themes)
+   FormGenius — Ultra-Compact Chrome-Native Popup
+   Width: 275px | Height: ~270px (Matches Native Chrome Extensions Menu)
+   Supports Light & Dark Modes
    ========================================================================== */
 
 *, *::before, *::after {
@@ -10,28 +10,26 @@
   padding: 0;
 }
 
-/* ── Dark Theme (Default — Chrome Native Dark Palette) ── */
+/* ── Dark Theme (Default — Chrome Native Dark Surface) ── */
 :root {
-  --cr-bg: #202124;
-  --cr-surface: #292929;
-  --cr-card-bg: #28292c;
-  --cr-input-bg: #28292c;
+  --cr-bg: #28292a;
+  --cr-surface: #202124;
+  --cr-card-bg: #202124;
+  --cr-input-bg: #202124;
   --cr-hover: rgba(255, 255, 255, 0.08);
   --cr-active: rgba(255, 255, 255, 0.14);
   --cr-border: #3c4043;
-  --cr-divider: #35373a;
+  --cr-divider: #383a3d;
   
   --cr-text-primary: #e8eaed;
   --cr-text-secondary: #9aa0a6;
   --cr-text-muted: #80868b;
   
-  /* Restrained Chrome Blue */
   --cr-primary: #8ab4f8;
   --cr-primary-hover: #aecbfa;
   --cr-primary-text: #00325b;
   --cr-focus-ring: rgba(138, 180, 248, 0.3);
   
-  /* Feedback States */
   --cr-success: #81c995;
   --cr-success-bg: rgba(129, 201, 149, 0.12);
   --cr-success-border: rgba(129, 201, 149, 0.28);
@@ -47,20 +45,17 @@
   --cr-error-border: rgba(242, 139, 130, 0.28);
   --cr-error-text: #f28b82;
   
-  /* Keycaps */
   --cr-kbd-bg: #35363a;
   --cr-kbd-border: #5f6368;
   --cr-kbd-bottom: #4a4d51;
   --cr-kbd-text: #e8eaed;
   
-  /* Radii */
-  --cr-radius-popup: 14px;
-  --cr-radius-card: 8px;
-  --cr-radius-pill: 17px;
-  --cr-radius-sm: 4px;
+  --cr-radius-popup: 12px;
+  --cr-radius-card: 6px;
+  --cr-radius-pill: 14px;
 }
 
-/* ── Light Theme (Chrome Native Light Palette) ── */
+/* ── Light Theme (Chrome Native Light Surface) ── */
 @media (prefers-color-scheme: light) {
   :root {
     --cr-bg: #ffffff;
@@ -103,121 +98,51 @@
   }
 }
 
-/* Explicit class overrides */
-:root.theme-dark, body.theme-dark {
-  --cr-bg: #202124;
-  --cr-surface: #292929;
-  --cr-card-bg: #28292c;
-  --cr-input-bg: #28292c;
-  --cr-hover: rgba(255, 255, 255, 0.08);
-  --cr-active: rgba(255, 255, 255, 0.14);
-  --cr-border: #3c4043;
-  --cr-divider: #35373a;
-  --cr-text-primary: #e8eaed;
-  --cr-text-secondary: #9aa0a6;
-  --cr-text-muted: #80868b;
-  --cr-primary: #8ab4f8;
-  --cr-primary-hover: #aecbfa;
-  --cr-primary-text: #00325b;
-  --cr-focus-ring: rgba(138, 180, 248, 0.3);
-  --cr-success: #81c995;
-  --cr-success-bg: rgba(129, 201, 149, 0.12);
-  --cr-success-border: rgba(129, 201, 149, 0.28);
-  --cr-success-text: #81c995;
-  --cr-warning: #fdd663;
-  --cr-warning-bg: rgba(253, 214, 99, 0.1);
-  --cr-warning-border: rgba(253, 214, 99, 0.25);
-  --cr-warning-text: #fdd663;
-  --cr-error: #f28b82;
-  --cr-error-bg: rgba(242, 139, 130, 0.12);
-  --cr-error-border: rgba(242, 139, 130, 0.28);
-  --cr-error-text: #f28b82;
-  --cr-kbd-bg: #35363a;
-  --cr-kbd-border: #5f6368;
-  --cr-kbd-bottom: #4a4d51;
-  --cr-kbd-text: #e8eaed;
-}
-
-:root.theme-light, body.theme-light {
-  --cr-bg: #ffffff;
-  --cr-surface: #f8f9fa;
-  --cr-card-bg: #f8f9fa;
-  --cr-input-bg: #f1f3f4;
-  --cr-hover: rgba(0, 0, 0, 0.05);
-  --cr-active: rgba(0, 0, 0, 0.09);
-  --cr-border: #dadce0;
-  --cr-divider: #e8eaed;
-  --cr-text-primary: #1f1f1f;
-  --cr-text-secondary: #5f6368;
-  --cr-text-muted: #70757a;
-  --cr-primary: #1a73e8;
-  --cr-primary-hover: #1765cc;
-  --cr-primary-text: #ffffff;
-  --cr-focus-ring: rgba(26, 115, 232, 0.25);
-  --cr-success: #1e8e3e;
-  --cr-success-bg: rgba(52, 168, 83, 0.08);
-  --cr-success-border: rgba(52, 168, 83, 0.25);
-  --cr-success-text: #137333;
-  --cr-warning: #e37400;
-  --cr-warning-bg: rgba(249, 171, 0, 0.08);
-  --cr-warning-border: rgba(249, 171, 0, 0.25);
-  --cr-warning-text: #b06000;
-  --cr-error: #d93025;
-  --cr-error-bg: rgba(217, 48, 37, 0.08);
-  --cr-error-border: rgba(217, 48, 37, 0.25);
-  --cr-error-text: #c5221f;
-  --cr-kbd-bg: #ffffff;
-  --cr-kbd-border: #dadce0;
-  --cr-kbd-bottom: #bdc1c6;
-  --cr-kbd-text: #3c4043;
-}
-
-/* ── Document Root & Popup Sizing ── */
+/* ── Root & Window Dimensions ── */
 html, body {
-  width: 330px;
+  width: 275px;
   margin: 0;
   padding: 0;
   background-color: var(--cr-bg);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--cr-text-primary);
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.35;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   user-select: none;
 }
 
-/* ── Content Container ── */
+/* ── Compact Main Container ── */
 .container {
-  padding: 12px 13px;
+  padding: 10px 11px;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 7px;
   background-color: var(--cr-bg);
   border-radius: var(--cr-radius-popup);
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* ── 1. Compact Header ── */
+/* ── 1. Compact Header (Matching Chrome Extensions Menu Row) ── */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--cr-divider);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 7px;
 }
 
 .logo-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -229,30 +154,28 @@ html, body {
 }
 
 .logo-name {
-  font-size: 14.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--cr-text-primary);
-  letter-spacing: -0.15px;
-  line-height: 1.25;
+  letter-spacing: -0.1px;
+  line-height: 1.2;
 }
 
 .logo-tagline {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--cr-text-secondary);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 6px;
 }
 
-/* Status Indicator Dot */
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--cr-text-muted);
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
@@ -260,35 +183,35 @@ html, body {
 
 .status-dot.active {
   background-color: var(--cr-success);
-  box-shadow: 0 0 0 2.5px rgba(129, 201, 149, 0.25);
+  box-shadow: 0 0 0 2px rgba(129, 201, 149, 0.25);
   animation: cr-pulse-dot 2.5s infinite ease-in-out;
 }
 
 .status-dot.inactive {
   background-color: var(--cr-warning);
-  box-shadow: 0 0 0 2.5px rgba(253, 214, 99, 0.2);
+  box-shadow: 0 0 0 2px rgba(253, 214, 99, 0.2);
 }
 
 @keyframes cr-pulse-dot {
   0%, 100% {
-    box-shadow: 0 0 0 2.5px rgba(129, 201, 149, 0.25);
+    box-shadow: 0 0 0 2px rgba(129, 201, 149, 0.25);
   }
   50% {
-    box-shadow: 0 0 0 4.5px rgba(129, 201, 149, 0.35);
+    box-shadow: 0 0 0 3.5px rgba(129, 201, 149, 0.35);
   }
 }
 
-/* ── 2. Google Form Status Message Banner ── */
+/* ── 2. Compact Status Banner ── */
 .status-banner {
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 34px;
+  gap: 6px;
+  min-height: 26px;
   background-color: var(--cr-card-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
-  padding: 6px 10px;
-  font-size: 11.5px;
+  padding: 4px 8px;
+  font-size: 10.5px;
   color: var(--cr-text-secondary);
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
@@ -307,30 +230,33 @@ html, body {
 }
 
 .status-icon {
-  font-size: 13px;
+  font-size: 11px;
   line-height: 1;
   flex-shrink: 0;
 }
 
 .status-text {
   flex: 1;
-  line-height: 1.3;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ── 3. Gemini API Key Section ── */
+/* ── 3. Compact Gemini API Key Section ── */
 .section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .label {
-  font-size: 10.5px;
+  font-size: 9.5px;
   font-weight: 600;
   color: var(--cr-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.4px;
-  line-height: 1.2;
+  letter-spacing: 0.3px;
+  line-height: 1.1;
 }
 
 .input-group {
@@ -341,14 +267,14 @@ html, body {
 
 .input {
   width: 100%;
-  height: 35px;
+  height: 29px;
   background-color: var(--cr-input-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
   color: var(--cr-text-primary);
   font-family: inherit;
-  font-size: 12.5px;
-  padding: 0 34px 0 10px;
+  font-size: 11.5px;
+  padding: 0 28px 0 8px;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -360,14 +286,14 @@ html, body {
 
 .input::placeholder {
   color: var(--cr-text-muted);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .eye-btn {
   position: absolute;
-  right: 5px;
-  width: 26px;
-  height: 26px;
+  right: 3px;
+  width: 22px;
+  height: 22px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -375,7 +301,7 @@ html, body {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 11px;
   color: var(--cr-text-secondary);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -388,15 +314,14 @@ html, body {
 .hint {
   display: flex;
   justify-content: flex-end;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .link {
   color: var(--cr-primary);
   text-decoration: none;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  transition: color 0.15s ease;
 }
 
 .link:hover {
@@ -406,26 +331,23 @@ html, body {
 
 /* ── 4. Compact Keyboard Shortcut Panel ── */
 .shortcut-card {
-  min-height: 56px;
   background-color: var(--cr-card-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
-  padding: 7px 10px;
+  padding: 5px 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .shortcut-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
 }
 
 .shortcut-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   color: var(--cr-text-secondary);
 }
@@ -433,12 +355,12 @@ html, body {
 .shortcut-keys {
   display: inline-flex;
   align-items: center;
-  gap: 3.5px;
+  gap: 2.5px;
 }
 
 .shortcut-plus {
   color: var(--cr-text-muted);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 500;
 }
 
@@ -446,41 +368,39 @@ kbd {
   display: inline-block;
   background-color: var(--cr-kbd-bg);
   border: 1px solid var(--cr-kbd-border);
-  border-bottom: 2px solid var(--cr-kbd-bottom);
+  border-bottom: 1.5px solid var(--cr-kbd-bottom);
   border-radius: 3px;
   color: var(--cr-kbd-text);
-  font-family: ui-monospace, SFMono-Regular, Consolas, "Roboto Mono", monospace;
-  font-size: 10.5px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 9.5px;
   font-weight: 600;
-  padding: 1.5px 5.5px;
-  line-height: 1.35;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-}
-
-.shortcut-desc {
-  font-size: 10.5px;
-  color: var(--cr-text-muted);
-  text-align: left;
+  padding: 1px 4.5px;
   line-height: 1.25;
 }
 
-/* ── 5. Action Buttons (Side-by-side, 34px height) ── */
+.shortcut-desc {
+  font-size: 9.5px;
+  color: var(--cr-text-muted);
+  line-height: 1.2;
+}
+
+/* ── 5. Action Buttons (Height: 29px) ── */
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .btn {
   flex: 1;
-  height: 34px;
-  padding: 0 12px;
+  height: 29px;
+  padding: 0 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   border-radius: var(--cr-radius-pill);
   font-family: inherit;
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
@@ -493,11 +413,10 @@ kbd {
 }
 
 .btn-icon {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
 }
 
-/* Primary Filled Button (Restrained Blue) */
 .btn-primary {
   background-color: var(--cr-primary);
   color: var(--cr-primary-text);
@@ -509,17 +428,12 @@ kbd {
   background-color: var(--cr-primary-hover);
 }
 
-.btn-primary:focus-visible {
-  box-shadow: 0 0 0 2px var(--cr-bg), 0 0 0 4px var(--cr-primary);
-}
-
 .btn-primary:disabled {
   opacity: 0.38;
   cursor: not-allowed;
   transform: none;
 }
 
-/* Secondary Outlined Button */
 .btn-save {
   background-color: transparent;
   color: var(--cr-primary);
@@ -531,74 +445,64 @@ kbd {
   border-color: var(--cr-primary);
 }
 
-.btn-save:active:not(:disabled) {
-  background-color: var(--cr-active);
-}
-
-.btn-save:focus-visible {
-  box-shadow: 0 0 0 2px var(--cr-bg), 0 0 0 4px var(--cr-primary);
-}
-
-/* ── 6. Compact Statistics Grid (50–54px height) ── */
+/* ── 6. Compact Statistics Grid ── */
 .stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
 }
 
 .stat {
-  min-height: 50px;
+  height: 34px;
   background-color: var(--cr-card-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
-  padding: 6px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.stat-value {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--cr-primary);
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: 9.5px;
-  font-weight: 500;
-  color: var(--cr-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.35px;
-  margin-top: 1px;
-  line-height: 1.2;
-}
-
-/* ── 7. Subtle Compact Footer ── */
-.footer {
+  padding: 3px 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding-top: 6px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cr-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--cr-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+/* ── 7. Subtle Footer ── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-top: 5px;
   border-top: 1px solid var(--cr-divider);
-  font-size: 10.5px;
+  font-size: 9.5px;
   color: var(--cr-text-muted);
 }
 
 .footer-dot {
-  font-size: 8px;
+  font-size: 7px;
   opacity: 0.7;
 }
 
 /* ── Loading Spinner ── */
 .spinner {
-  width: 13px;
-  height: 13px;
-  border: 2px solid rgba(0, 50, 91, 0.25);
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid rgba(0, 50, 91, 0.25);
   border-top-color: currentColor;
   border-radius: 50%;
   animation: cr-spin 0.75s linear infinite;
@@ -615,17 +519,17 @@ kbd {
 /* ── Toast Notification ── */
 .toast {
   position: fixed;
-  bottom: 12px;
+  bottom: 8px;
   left: 50%;
-  transform: translateX(-50%) translateY(20px);
+  transform: translateX(-50%) translateY(16px);
   background-color: #323232;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 11.5px;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 10.5px;
   font-weight: 500;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1), transform 0.2s cubic-bezier(0, 0, 0.2, 1);
@@ -639,9 +543,9 @@ kbd {
 }
 
 .toast.success {
-  border-left: 3px solid #81c995;
+  border-left: 2.5px solid #81c995;
 }
 
 .toast.error {
-  border-left: 3px solid #f28b82;
+  border-left: 2.5px solid #f28b82;
 }
