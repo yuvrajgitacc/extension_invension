@@ -1,5 +1,6 @@
 /* ==========================================================================
-   FormGenius — Pixel-Perfect Layout with Full White & Dark Theme Support
+   FormGenius — Pixel-Perfect Layout with Automatic Chrome Theme Switching
+   (Automatically adapts to Chrome Light / Dark Mode via prefers-color-scheme)
    ========================================================================== */
 
 *, *::before, *::after {
@@ -8,93 +9,8 @@
   padding: 0;
 }
 
-/* ── Light / White Theme (Default fallback & .theme-light) ── */
+/* ── Dark Theme (Default when Chrome is in Dark Mode) ── */
 :root {
-  --cr-bg: #ffffff;
-  --cr-card-bg: #f5f6f9;
-  --cr-card-border: #e3e6ec;
-  --cr-input-bg: #f5f6f9;
-  --cr-input-border: #e3e6ec;
-  --cr-input-focus: #1a73e8;
-  --cr-input-color: #1a1a1a;
-  
-  --cr-save-bg: #ffffff;
-  --cr-save-border: #dadce0;
-  --cr-save-hover: #f1f3f4;
-  --cr-save-text: #1a73e8;
-  
-  --cr-text-primary: #1f1f1f;
-  --cr-text-secondary: #5f6368;
-  --cr-text-muted: #70757a;
-  
-  --cr-kbd-bg: #ffffff;
-  --cr-kbd-border: #dadce0;
-  --cr-kbd-text: #3c4043;
-  --cr-kbd-plus: #80868b;
-  
-  --cr-solve-disabled-bg: #f1f3f4;
-  --cr-solve-disabled-text: #80868b;
-  --cr-solve-active-bg: #1a73e8;
-  --cr-solve-active-hover: #1765cc;
-  --cr-solve-active-text: #ffffff;
-  
-  --cr-divider: #e8eaed;
-  --cr-link: #1a73e8;
-  --cr-link-hover: #1557b0;
-  
-  --cr-dot-inactive: #fbbc04;
-  --cr-dot-active: #1e8e3e;
-  
-  --cr-toast-bg: #202124;
-  --cr-toast-text: #ffffff;
-  --cr-toast-border: #3c4043;
-}
-
-/* ── Dark Theme (System Dark or .theme-dark) ── */
-@media (prefers-color-scheme: dark) {
-  :root:not(.theme-light) {
-    --cr-bg: #191a1e;
-    --cr-card-bg: #212328;
-    --cr-card-border: #2c2f36;
-    --cr-input-bg: #212328;
-    --cr-input-border: #2c2f36;
-    --cr-input-focus: #3b82f6;
-    --cr-input-color: #ffffff;
-    
-    --cr-save-bg: #2b2d35;
-    --cr-save-border: #3d414c;
-    --cr-save-hover: #353842;
-    --cr-save-text: #ffffff;
-    
-    --cr-text-primary: #ffffff;
-    --cr-text-secondary: #8e929d;
-    --cr-text-muted: #585c67;
-    
-    --cr-kbd-bg: #2a2d34;
-    --cr-kbd-border: #3c404b;
-    --cr-kbd-text: #e4e7ec;
-    --cr-kbd-plus: #636773;
-    
-    --cr-solve-disabled-bg: #27292f;
-    --cr-solve-disabled-text: #585c67;
-    --cr-solve-active-bg: #1a73e8;
-    --cr-solve-active-hover: #1765cc;
-    --cr-solve-active-text: #ffffff;
-    
-    --cr-divider: #2c2f36;
-    --cr-link: #3b82f6;
-    --cr-link-hover: #60a5fa;
-    
-    --cr-dot-inactive: #fbbc04;
-    --cr-dot-active: #34a853;
-    
-    --cr-toast-bg: #2b2d35;
-    --cr-toast-text: #ffffff;
-    --cr-toast-border: #3d414c;
-  }
-}
-
-:root.theme-dark {
   --cr-bg: #191a1e;
   --cr-card-bg: #212328;
   --cr-card-border: #2c2f36;
@@ -135,45 +51,48 @@
   --cr-toast-border: #3d414c;
 }
 
-:root.theme-light {
-  --cr-bg: #ffffff;
-  --cr-card-bg: #f5f6f9;
-  --cr-card-border: #e3e6ec;
-  --cr-input-bg: #f5f6f9;
-  --cr-input-border: #e3e6ec;
-  --cr-input-focus: #1a73e8;
-  --cr-input-color: #1a1a1a;
-  
-  --cr-save-bg: #ffffff;
-  --cr-save-border: #dadce0;
-  --cr-save-hover: #f1f3f4;
-  --cr-save-text: #1a73e8;
-  
-  --cr-text-primary: #1f1f1f;
-  --cr-text-secondary: #5f6368;
-  --cr-text-muted: #70757a;
-  
-  --cr-kbd-bg: #ffffff;
-  --cr-kbd-border: #dadce0;
-  --cr-kbd-text: #3c4043;
-  --cr-kbd-plus: #80868b;
-  
-  --cr-solve-disabled-bg: #f1f3f4;
-  --cr-solve-disabled-text: #80868b;
-  --cr-solve-active-bg: #1a73e8;
-  --cr-solve-active-hover: #1765cc;
-  --cr-solve-active-text: #ffffff;
-  
-  --cr-divider: #e8eaed;
-  --cr-link: #1a73e8;
-  --cr-link-hover: #1557b0;
-  
-  --cr-dot-inactive: #fbbc04;
-  --cr-dot-active: #1e8e3e;
-  
-  --cr-toast-bg: #202124;
-  --cr-toast-text: #ffffff;
-  --cr-toast-border: #3c4043;
+/* ── White / Light Theme (Automatically activates when Chrome is in Light Mode) ── */
+@media (prefers-color-scheme: light) {
+  :root {
+    --cr-bg: #ffffff;
+    --cr-card-bg: #f5f6f9;
+    --cr-card-border: #e3e6ec;
+    --cr-input-bg: #f5f6f9;
+    --cr-input-border: #e3e6ec;
+    --cr-input-focus: #1a73e8;
+    --cr-input-color: #1a1a1a;
+    
+    --cr-save-bg: #ffffff;
+    --cr-save-border: #dadce0;
+    --cr-save-hover: #f1f3f4;
+    --cr-save-text: #1a73e8;
+    
+    --cr-text-primary: #1f1f1f;
+    --cr-text-secondary: #5f6368;
+    --cr-text-muted: #70757a;
+    
+    --cr-kbd-bg: #ffffff;
+    --cr-kbd-border: #dadce0;
+    --cr-kbd-text: #3c4043;
+    --cr-kbd-plus: #80868b;
+    
+    --cr-solve-disabled-bg: #f1f3f4;
+    --cr-solve-disabled-text: #80868b;
+    --cr-solve-active-bg: #1a73e8;
+    --cr-solve-active-hover: #1765cc;
+    --cr-solve-active-text: #ffffff;
+    
+    --cr-divider: #e8eaed;
+    --cr-link: #1a73e8;
+    --cr-link-hover: #1557b0;
+    
+    --cr-dot-inactive: #fbbc04;
+    --cr-dot-active: #1e8e3e;
+    
+    --cr-toast-bg: #202124;
+    --cr-toast-text: #ffffff;
+    --cr-toast-border: #3c4043;
+  }
 }
 
 /* ── Document Root ── */
@@ -257,30 +176,6 @@ html, body {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-/* Theme Toggle Button (☀️ / 🌙) */
-.theme-toggle-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cr-text-secondary);
-  transition: background-color 0.15s ease, transform 0.15s ease;
-  line-height: 1;
-  padding: 0;
-}
-
-.theme-toggle-btn:hover {
-  background-color: rgba(128, 128, 128, 0.15);
-  transform: scale(1.08);
 }
 
 .status-dot {
@@ -322,7 +217,7 @@ html, body {
 }
 
 .status-card.detected .status-text {
-  color: #1e8e3e;
+  color: var(--cr-dot-active);
 }
 
 .status-title-row {
