@@ -1,7 +1,7 @@
 /* ==========================================================================
-   FormGenius — Chrome Extension Native UI Theme
-   Matches Google Chrome Material Design 3 (Refresh 2023)
-   Supports Dark Mode (Screenshot 1) & Light Mode (Screenshot 2)
+   FormGenius — Refined Compact Chrome-Native Popup
+   Dimensions: ~330px width × ~370px height (Content-driven, no scrollbars)
+   Consistent with Google Chrome Extension Native UI (Light & Dark Themes)
    ========================================================================== */
 
 *, *::before, *::after {
@@ -10,31 +10,31 @@
   padding: 0;
 }
 
-/* ── Chrome Design Tokens (Dark Mode Default — Screenshot 1) ── */
+/* ── Dark Theme (Default — Chrome Native Dark Palette) ── */
 :root {
-  --cr-bg: #292a2d;
-  --cr-surface: #202124;
-  --cr-card-bg: #202124;
-  --cr-input-bg: #202124;
+  --cr-bg: #202124;
+  --cr-surface: #292929;
+  --cr-card-bg: #28292c;
+  --cr-input-bg: #28292c;
   --cr-hover: rgba(255, 255, 255, 0.08);
   --cr-active: rgba(255, 255, 255, 0.14);
   --cr-border: #3c4043;
-  --cr-divider: #3c4043;
+  --cr-divider: #35373a;
   
   --cr-text-primary: #e8eaed;
   --cr-text-secondary: #9aa0a6;
   --cr-text-muted: #80868b;
   
-  /* Chrome Blue */
+  /* Restrained Chrome Blue */
   --cr-primary: #8ab4f8;
   --cr-primary-hover: #aecbfa;
   --cr-primary-text: #00325b;
-  --cr-focus-ring: rgba(138, 180, 248, 0.35);
+  --cr-focus-ring: rgba(138, 180, 248, 0.3);
   
-  /* Status Colors */
+  /* Feedback States */
   --cr-success: #81c995;
   --cr-success-bg: rgba(129, 201, 149, 0.12);
-  --cr-success-border: rgba(129, 201, 149, 0.3);
+  --cr-success-border: rgba(129, 201, 149, 0.28);
   --cr-success-text: #81c995;
   
   --cr-warning: #fdd663;
@@ -44,26 +44,23 @@
   
   --cr-error: #f28b82;
   --cr-error-bg: rgba(242, 139, 130, 0.12);
-  --cr-error-border: rgba(242, 139, 130, 0.3);
+  --cr-error-border: rgba(242, 139, 130, 0.28);
   --cr-error-text: #f28b82;
   
-  /* Keyboard Badges */
+  /* Keycaps */
   --cr-kbd-bg: #35363a;
   --cr-kbd-border: #5f6368;
   --cr-kbd-bottom: #4a4d51;
   --cr-kbd-text: #e8eaed;
   
   /* Radii */
+  --cr-radius-popup: 14px;
   --cr-radius-card: 8px;
-  --cr-radius-pill: 18px;
-  --cr-radius-sm: 6px;
-  
-  /* Shadow */
-  --cr-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --cr-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --cr-radius-pill: 17px;
+  --cr-radius-sm: 4px;
 }
 
-/* ── Chrome Light Mode (Screenshot 2) ── */
+/* ── Light Theme (Chrome Native Light Palette) ── */
 @media (prefers-color-scheme: light) {
   :root {
     --cr-bg: #ffffff;
@@ -103,32 +100,29 @@
     --cr-kbd-border: #dadce0;
     --cr-kbd-bottom: #bdc1c6;
     --cr-kbd-text: #3c4043;
-    
-    --cr-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --cr-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
 }
 
-/* Explicit theme override classes */
+/* Explicit class overrides */
 :root.theme-dark, body.theme-dark {
-  --cr-bg: #292a2d;
-  --cr-surface: #202124;
-  --cr-card-bg: #202124;
-  --cr-input-bg: #202124;
+  --cr-bg: #202124;
+  --cr-surface: #292929;
+  --cr-card-bg: #28292c;
+  --cr-input-bg: #28292c;
   --cr-hover: rgba(255, 255, 255, 0.08);
   --cr-active: rgba(255, 255, 255, 0.14);
   --cr-border: #3c4043;
-  --cr-divider: #3c4043;
+  --cr-divider: #35373a;
   --cr-text-primary: #e8eaed;
   --cr-text-secondary: #9aa0a6;
   --cr-text-muted: #80868b;
   --cr-primary: #8ab4f8;
   --cr-primary-hover: #aecbfa;
   --cr-primary-text: #00325b;
-  --cr-focus-ring: rgba(138, 180, 248, 0.35);
+  --cr-focus-ring: rgba(138, 180, 248, 0.3);
   --cr-success: #81c995;
   --cr-success-bg: rgba(129, 201, 149, 0.12);
-  --cr-success-border: rgba(129, 201, 149, 0.3);
+  --cr-success-border: rgba(129, 201, 149, 0.28);
   --cr-success-text: #81c995;
   --cr-warning: #fdd663;
   --cr-warning-bg: rgba(253, 214, 99, 0.1);
@@ -136,7 +130,7 @@
   --cr-warning-text: #fdd663;
   --cr-error: #f28b82;
   --cr-error-bg: rgba(242, 139, 130, 0.12);
-  --cr-error-border: rgba(242, 139, 130, 0.3);
+  --cr-error-border: rgba(242, 139, 130, 0.28);
   --cr-error-text: #f28b82;
   --cr-kbd-bg: #35363a;
   --cr-kbd-border: #5f6368;
@@ -178,43 +172,46 @@
   --cr-kbd-text: #3c4043;
 }
 
-/* ── Base Body ── */
-body {
-  width: 350px;
+/* ── Document Root & Popup Sizing ── */
+html, body {
+  width: 330px;
+  margin: 0;
+  padding: 0;
   background-color: var(--cr-bg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--cr-text-primary);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow: hidden;
   user-select: none;
 }
 
-/* ── Main Container ── */
+/* ── Content Container ── */
 .container {
-  padding: 16px;
+  padding: 12px 13px;
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 9px;
   background-color: var(--cr-bg);
+  border-radius: var(--cr-radius-popup);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* ── Header (Matching Chrome Extensions Menu Header) ── */
+/* ── 1. Compact Header ── */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--cr-divider);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
 }
 
 .logo-icon {
@@ -232,11 +229,11 @@ body {
 }
 
 .logo-name {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 600;
   color: var(--cr-text-primary);
-  letter-spacing: -0.1px;
-  line-height: 1.3;
+  letter-spacing: -0.15px;
+  line-height: 1.25;
 }
 
 .logo-tagline {
@@ -249,51 +246,51 @@ body {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-/* Status Dot */
+/* Status Indicator Dot */
 .status-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--cr-text-muted);
-  transition: all 0.25s ease;
-  position: relative;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .status-dot.active {
   background-color: var(--cr-success);
-  box-shadow: 0 0 0 3px rgba(129, 201, 149, 0.25);
-  animation: pulse-dot 2.5s infinite ease-in-out;
+  box-shadow: 0 0 0 2.5px rgba(129, 201, 149, 0.25);
+  animation: cr-pulse-dot 2.5s infinite ease-in-out;
 }
 
 .status-dot.inactive {
   background-color: var(--cr-warning);
-  box-shadow: 0 0 0 3px rgba(253, 214, 99, 0.2);
+  box-shadow: 0 0 0 2.5px rgba(253, 214, 99, 0.2);
 }
 
-@keyframes pulse-dot {
+@keyframes cr-pulse-dot {
   0%, 100% {
-    box-shadow: 0 0 0 3px rgba(129, 201, 149, 0.25);
+    box-shadow: 0 0 0 2.5px rgba(129, 201, 149, 0.25);
   }
   50% {
-    box-shadow: 0 0 0 5px rgba(129, 201, 149, 0.4);
+    box-shadow: 0 0 0 4.5px rgba(129, 201, 149, 0.35);
   }
 }
 
-/* ── Status Banner (Matching Chrome Site Access Notice) ── */
+/* ── 2. Google Form Status Message Banner ── */
 .status-banner {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  min-height: 34px;
   background-color: var(--cr-card-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
-  padding: 10px 12px;
-  font-size: 12px;
+  padding: 6px 10px;
+  font-size: 11.5px;
   color: var(--cr-text-secondary);
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .status-banner.detected {
@@ -310,29 +307,30 @@ body {
 }
 
 .status-icon {
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1;
   flex-shrink: 0;
 }
 
 .status-text {
   flex: 1;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
-/* ── Input Section (Chrome Settings Style) ── */
+/* ── 3. Gemini API Key Section ── */
 .section {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .label {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   color: var(--cr-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
 }
 
 .input-group {
@@ -343,16 +341,16 @@ body {
 
 .input {
   width: 100%;
-  height: 38px;
+  height: 35px;
   background-color: var(--cr-input-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
   color: var(--cr-text-primary);
   font-family: inherit;
-  font-size: 13px;
-  padding: 0 40px 0 12px;
+  font-size: 12.5px;
+  padding: 0 34px 0 10px;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .input:focus {
@@ -367,9 +365,9 @@ body {
 
 .eye-btn {
   position: absolute;
-  right: 6px;
-  width: 28px;
-  height: 28px;
+  right: 5px;
+  width: 26px;
+  height: 26px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -377,7 +375,7 @@ body {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--cr-text-secondary);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -390,7 +388,7 @@ body {
 .hint {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .link {
@@ -406,23 +404,24 @@ body {
   color: var(--cr-primary-hover);
 }
 
-/* ── Shortcut Card (Chrome Shortcuts Style) ── */
+/* ── 4. Compact Keyboard Shortcut Panel ── */
 .shortcut-card {
+  min-height: 56px;
   background-color: var(--cr-card-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
-  padding: 10px 12px;
+  padding: 7px 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  text-align: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .shortcut-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
 }
 
 .shortcut-label {
@@ -434,12 +433,12 @@ body {
 .shortcut-keys {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 3.5px;
 }
 
 .shortcut-plus {
   color: var(--cr-text-muted);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
 }
 
@@ -448,23 +447,24 @@ kbd {
   background-color: var(--cr-kbd-bg);
   border: 1px solid var(--cr-kbd-border);
   border-bottom: 2px solid var(--cr-kbd-bottom);
-  border-radius: 4px;
+  border-radius: 3px;
   color: var(--cr-kbd-text);
-  font-family: ui-monospace, SFMono-Regular, Consolas, 'Roboto Mono', monospace;
-  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Roboto Mono", monospace;
+  font-size: 10.5px;
   font-weight: 600;
-  padding: 2px 7px;
-  line-height: 1.4;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 1.5px 5.5px;
+  line-height: 1.35;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 
 .shortcut-desc {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--cr-text-muted);
   text-align: left;
+  line-height: 1.25;
 }
 
-/* ── Action Buttons (Chrome Material 3 Style) ── */
+/* ── 5. Action Buttons (Side-by-side, 34px height) ── */
 .actions {
   display: flex;
   gap: 8px;
@@ -472,20 +472,20 @@ kbd {
 
 .btn {
   flex: 1;
-  height: 36px;
-  padding: 0 14px;
+  height: 34px;
+  padding: 0 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   border-radius: var(--cr-radius-pill);
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
   outline: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.08s ease;
 }
 
 .btn:active:not(:disabled) {
@@ -493,11 +493,11 @@ kbd {
 }
 
 .btn-icon {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1;
 }
 
-/* Primary Filled Button (Google Blue) */
+/* Primary Filled Button (Restrained Blue) */
 .btn-primary {
   background-color: var(--cr-primary);
   color: var(--cr-primary-text);
@@ -507,7 +507,6 @@ kbd {
 
 .btn-primary:hover:not(:disabled) {
   background-color: var(--cr-primary-hover);
-  box-shadow: var(--cr-elevation-1);
 }
 
 .btn-primary:focus-visible {
@@ -518,7 +517,6 @@ kbd {
   opacity: 0.38;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
 }
 
 /* Secondary Outlined Button */
@@ -541,7 +539,7 @@ kbd {
   box-shadow: 0 0 0 2px var(--cr-bg), 0 0 0 4px var(--cr-primary);
 }
 
-/* ── Stats Tiles (Clean Chrome Card Metric Grid) ── */
+/* ── 6. Compact Statistics Grid (50–54px height) ── */
 .stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -549,10 +547,15 @@ kbd {
 }
 
 .stat {
+  min-height: 50px;
   background-color: var(--cr-card-bg);
   border: 1px solid var(--cr-border);
   border-radius: var(--cr-radius-card);
-  padding: 8px 10px;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -561,29 +564,29 @@ kbd {
   font-size: 18px;
   font-weight: 600;
   color: var(--cr-primary);
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .stat-label {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 500;
   color: var(--cr-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.4px;
-  margin-top: 2px;
+  letter-spacing: 0.35px;
+  margin-top: 1px;
+  line-height: 1.2;
 }
 
-/* ── Footer (Matching Chrome Extensions Bottom Bar) ── */
+/* ── 7. Subtle Compact Footer ── */
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding-top: 10px;
+  gap: 6px;
+  padding-top: 6px;
   border-top: 1px solid var(--cr-divider);
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--cr-text-muted);
-  margin-top: 2px;
 }
 
 .footer-dot {
@@ -591,10 +594,10 @@ kbd {
   opacity: 0.7;
 }
 
-/* ── Loading Spinner (Chrome Material Spinner) ── */
+/* ── Loading Spinner ── */
 .spinner {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border: 2px solid rgba(0, 50, 91, 0.25);
   border-top-color: currentColor;
   border-radius: 50%;
@@ -609,20 +612,20 @@ kbd {
   }
 }
 
-/* ── Toast Notification (Chrome Snackbar) ── */
+/* ── Toast Notification ── */
 .toast {
   position: fixed;
-  bottom: 14px;
+  bottom: 12px;
   left: 50%;
-  transform: translateX(-50%) translateY(24px);
+  transform: translateX(-50%) translateY(20px);
   background-color: #323232;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--cr-radius-card);
-  padding: 8px 14px;
-  font-size: 12px;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11.5px;
   font-weight: 500;
-  box-shadow: var(--cr-elevation-2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1), transform 0.2s cubic-bezier(0, 0, 0.2, 1);
