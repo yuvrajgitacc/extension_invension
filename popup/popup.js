@@ -9,6 +9,43 @@ const statusBanner = document.getElementById('statusBanner');
 const statusText = document.getElementById('statusText');
 const solvedCount = document.getElementById('solvedCount');
 const questionsCount = document.getElementById('questionsCount');
+const themeToggleBtn = document.getElementById('themeToggle');
+
+// ── Theme Management (White & Dark Themes) ──
+async function initTheme() {
+  try {
+    const data = await chrome.storage.sync.get('theme');
+    let currentTheme = data.theme;
+    if (!currentTheme) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      currentTheme = prefersDark ? 'dark' : 'light';
+    }
+    applyTheme(currentTheme);
+  } catch (e) {
+    applyTheme('light');
+  }
+}
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.classList.add('theme-light');
+    document.documentElement.classList.remove('theme-dark');
+    if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
+  } else {
+    document.documentElement.classList.add('theme-dark');
+    document.documentElement.classList.remove('theme-light');
+    if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
+  }
+}
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', async () => {
+    const isLight = document.documentElement.classList.contains('theme-light');
+    const newTheme = isLight ? 'dark' : 'light';
+    applyTheme(newTheme);
+    await chrome.storage.sync.set({ theme: newTheme });
+  });
+}
 
 // ── Toast Notification ──
 function showToast(message, type = 'info') {
@@ -27,6 +64,7 @@ function showToast(message, type = 'info') {
 
 // ── Load saved data ──
 async function init() {
+  await initTheme();
   const data = await chrome.storage.sync.get(['apiKey', 'solvedForms', 'totalQuestions']);
 
   if (data.apiKey) {
